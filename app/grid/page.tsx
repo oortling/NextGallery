@@ -1,5 +1,5 @@
 import React from 'react'
-import Group from '@/components/group'
+import Group from '@/components/groups'
 
 export default function Grid() {
   return (
