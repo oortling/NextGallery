@@ -17,7 +17,7 @@ export default function Header() {
         <div className="text-xl space-x-4">
           {
             linkData.map((link, index) => (
-              <Link className={pathname === link.path ? 'text-purple-500' : ''} key={index} href={link.path}>{link.name}</Link>
+              <Link className={pathname === link.path ? 'text-gray-500' : '' } key={index} href={link.path}>{link.name}</Link>
             ))
           }
         </div>

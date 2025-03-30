@@ -1,6 +1,8 @@
+'use client'
 import React from 'react'
 import { Ubuntu } from 'next/font/google'
 import Image, { StaticImageData } from 'next/image'
+import Lightbox from '@/components/lightbox'
 import photoSrc from '../public/home.jpg'
 
 const font = Ubuntu({ weight: '400' })
@@ -55,9 +57,17 @@ interface GroupProps {
 }
 
 export default function Group(grids: GroupProps) {
+  const [isLightboxOpen, setIsLightboxOpen] = React.useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
+
+  const openLightbox = (index: number) => {
+    setCurrentImageIndex(index);
+    setIsLightboxOpen(true);
+  };
+
   return (
-    <div className={`${font.className} items-center container p-8 mx-auto`}>
-      <div className='flex text-left pt-20 gap-2'>
+    <div className={`${font.className} container p-8 mx-auto`}>
+      <div className='flex text-left pt-4 gap-2 items-center'>
         <div className='text-white text-xl'>{grids.data}</div>
         <div className='text-white text-xl'>{grids.location}</div>
         <div className='text-gray-400'>{grids.size} images</div>
@@ -65,10 +75,17 @@ export default function Group(grids: GroupProps) {
       <div className='grid grid-cols-4 gap-4 pt-4'>
         {
           photoData.map((photo, index) => (
-            <Image key={index} alt={photo.altText} src={photo.imgUrl} />
+            <Image key={index} alt={photo.altText} src={photo.imgUrl} onClick={() => openLightbox(index)}/>
           ))
         }
       </div>
+      {isLightboxOpen && (
+        <Lightbox
+          images={photoData.map((photo) => photo.imgUrl)}
+          currentIndex={currentImageIndex}
+          onClose={() => setIsLightboxOpen(false)}
+        />
+      )}
     </div>
   )
 }
