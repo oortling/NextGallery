@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { Ubuntu } from 'next/font/google'
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
 import Lightbox from '@/components/lightbox'
 import photoSrc from '../public/home.jpg'
 
