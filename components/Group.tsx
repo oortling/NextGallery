@@ -1,0 +1,74 @@
+import React from 'react'
+import { Ubuntu } from 'next/font/google'
+import Image, { StaticImageData } from 'next/image'
+import photoSrc from '../public/home.jpg'
+
+const font = Ubuntu({ weight: '400' })
+
+const photoData = [
+  {
+    imgUrl: photoSrc,
+    altText: 'photo1',
+    title: 'Title1'
+  },
+  {
+    imgUrl: photoSrc,
+    altText: 'photo2',
+    title: 'Title2'
+  },
+  {
+    imgUrl: photoSrc,
+    altText: 'photo3',
+    title: 'Title3'
+  },
+  {
+    imgUrl: photoSrc,
+    altText: 'photo4',
+    title: 'Title4'
+  },
+  {
+    imgUrl: photoSrc,
+    altText: 'photo5',
+    title: 'Title'
+  },
+  {
+    imgUrl: photoSrc,
+    altText: 'photo6',
+    title: 'Title6'
+  },
+  {
+    imgUrl: photoSrc,
+    altText: 'photo7',
+    title: 'Title7'
+  },
+  {
+    imgUrl: photoSrc,
+    altText: 'photo8',
+    title: 'Title8'
+  },
+]
+
+interface GroupProps {
+  data: string
+  location: string
+  size: number
+}
+
+export default function Group(grids: GroupProps) {
+  return (
+    <div className={`${font.className} items-center container p-8 mx-auto`}>
+      <div className='flex text-left pt-20 gap-2'>
+        <div className='text-white text-xl'>{grids.data}</div>
+        <div className='text-white text-xl'>{grids.location}</div>
+        <div className='text-gray-400'>{grids.size} images</div>
+      </div>
+      <div className='grid grid-cols-4 gap-4 pt-4'>
+        {
+          photoData.map((photo, index) => (
+            <Image key={index} alt={photo.altText} src={photo.imgUrl} />
+          ))
+        }
+      </div>
+    </div>
+  )
+}
