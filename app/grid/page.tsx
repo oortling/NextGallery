@@ -3,7 +3,7 @@ import Group from '@/components/group'
 
 export default function Grid() {
   return (
-    <div className='pt-20'>
+    <div className='pt-30'>
       <Group data='2025-03-23' location='香港特别行政区' size={8} />
       <Group data='2025-03-22' location='故宫博物院' size={8} />
       <Group data='2025-03-21' location='张家界国家森林公园' size={8} />
