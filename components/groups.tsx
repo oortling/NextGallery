@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Lightbox from '@/components/lightbox'
 import photoSrc from '../public/home.jpg'
 
-const font = Ubuntu({ weight: '400' })
+const font = Ubuntu({ weight: '400', subsets: ['latin'] })
 
 const photoData = [
   {
